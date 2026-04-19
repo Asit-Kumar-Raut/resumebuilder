@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resume builder</title>
+    <meta name="description" content="Build professional, ATS-optimized resumes in minutes with our AI Resume Builder. Get hired faster with modern templates and smart content suggestions.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">ResumAI</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="#signup" class="btn btn-primary">Get Started</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container grid">
+                <div class="hero-content">
+                    <h1 class="fade-in">Build Your Career with AI-Powered Precision</h1>
+                    <p class="fade-in delay-1">Transform your professional story into a recruiter-ready resume in minutes. Optimized for ATS and designed to get you hired by top companies.</p>
+                    <div class="hero-btns fade-in delay-2">
+                        <a href="#signup" class="btn btn-primary btn-large">Build My Resume — Free</a>
+                        <a href="#how-it-works" class="btn btn-secondary btn-large">How It Works</a>
+                    </div>
+                    <div class="hero-stats fade-in delay-3">
+                        <div class="stat"><span id="count-resumes">0</span>k+ Resumes Built</div>
+                        <div class="stat"><span id="count-ats">0</span>% ATS Pass Rate</div>
+                    </div>
+                </div>
+                <div class="hero-visual fade-in delay-1">
+                    <div class="mockup-container">
+                        <img src="assets/hero_mockup.png" alt="AI Resume Builder Dashboard Mockup" class="hero-img">
+                        <div class="floating-card c1"><span>✓</span> ATS Optimized</div>
+                        <div class="floating-card c2"><span>✨</span> AI Writing...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="reveal">Supercharge Your Job Search</h2>
+                    <p class="reveal">Everything you need to stand out in a crowded market.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9z"/><path d="M8.5 10.5 12 7l3.5 3.5"/><path d="m8.5 13.5 3.5 3.5 3.5-3.5"/></svg>
+                        </div>
+                        <h3>AI Writing Assistant</h3>
+                        <p>Craft professional bullet points that highlight your impact using industry-specific keywords.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        <h3>ATS Optimization</h3>
+                        <p>Our algorithms ensure your data is readable by Applicant Tracking Systems used by 99% of Fortune 500 companies.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/><path d="M13 13h4"/><path d="M13 17h4"/></svg>
+                        </div>
+                        <h3>Premium Templates</h3>
+                        <p>Access 50+ Modern, professional templates designed by top recruiters to maximize readability.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <h3>Instant Analysis</h3>
+                        <p>Get a real-time score for your resume and actionable tips to improve your interview chances.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="reveal">Three Steps to Your Dream Job</h2>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-item reveal">
+                        <div class="step-number">01</div>
+                        <h3>Input Your Stats</h3>
+                        <p>Upload your old resume or fill in your details manually.</p>
+                    </div>
+                    <div class="step-item reveal">
+                        <div class="step-number">02</div>
+                        <h3>Optimize with AI</h3>
+                        <p>Our AI analyzes your experience and suggests high-impact content.</p>
+                    </div>
+                    <div class="step-item reveal">
+                        <div class="step-number">03</div>
+                        <h3>Ready to Apply</h3>
+                        <p>Download your polished, PDF-ready resume and start applying.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="reveal">Success Stories</h2>
+                    <p class="reveal">Join thousands of professionals who landed their jobs using ResumAI.</p>
+                </div>
+                <div id="testimonial-container" class="testimonials-grid">
+                    <!-- JS Injected Content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="signup" class="cta-section">
+            <div class="container reveal">
+                <div class="cta-card">
+                    <h2>Ready to Build Your Future?</h2>
+                    <p>Stop guessing and start getting noticed. Create your professional resume today.</p>
+                    <a href="#" class="btn btn-primary btn-large">Get Started Now</a>
+                    <div class="cta-subtext">No credit card required. Free to start.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container grid">
+            <div class="footer-info">
+                <div class="logo">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">ResumAI</span>
+                </div>
+                <p>Helping professionals worldwide land their dream roles with the power of artificial intelligence.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn">LN</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="GitHub">GH</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#">Templates</a>
+                </div>
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="link-group">
+                    <h4>Legals</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 ResumAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
