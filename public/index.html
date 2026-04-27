@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>resume builder</title>
+    <title>ASIT Resume Builder - Get Hired Faster</title>
     <meta name="description" content="Build professional, ATS-optimized resumes in minutes with our AI Resume Builder. Get hired faster with modern templates and smart content suggestions.">
     
     <!-- Google Fonts -->
@@ -15,11 +15,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="sky-container" id="sky"></div>
+    <div class="signature">with love of asit <span>❤️</span></div>
+
     <header class="navbar">
         <div class="container">
             <div class="logo">
-                <span class="logo-icon">✨</span>
-                <span class="logo-text">ResumAI</span>
+                <span class="logo-icon">👑</span>
+                <span class="logo-text">ASIT Builder</span>
             </div>
             <nav class="nav-links">
                 <a href="#features">Features</a>
@@ -27,7 +30,7 @@
                 <a href="#testimonials">Testimonials</a>
             </nav>
             <div class="nav-cta">
-                <a href="#signup" class="btn btn-primary">Get Started</a>
+                <a href="javascript:void(0)" onclick="openModal('signup-modal')" class="btn btn-primary">Get Started</a>
             </div>
             <button class="mobile-menu-toggle" aria-label="Toggle Menu">
                 <span></span>
@@ -42,10 +45,10 @@
         <section class="hero-section">
             <div class="container grid">
                 <div class="hero-content">
-                    <h1 class="fade-in">Build Your Career with AI-Powered Precision</h1>
-                    <p class="fade-in delay-1">Transform your professional story into a recruiter-ready resume in minutes. Optimized for ATS and designed to get you hired by top companies.</p>
+                    <h1 class="fade-in">Land Your Dream Job with ASIT Resume Builder</h1>
+                    <p class="fade-in delay-1">Build a professional, premium resume in minutes. Powered by AI and designed by recruiters to make you stand out from the crowd.</p>
                     <div class="hero-btns fade-in delay-2">
-                        <a href="#signup" class="btn btn-primary btn-large">Build My Resume — Free</a>
+                        <a href="javascript:void(0)" onclick="openModal('signup-modal')" class="btn btn-primary btn-large">Build My Resume — Free</a>
                         <a href="#how-it-works" class="btn btn-secondary btn-large">How It Works</a>
                     </div>
                     <div class="hero-stats fade-in delay-3">
@@ -112,18 +115,18 @@
                 <div class="steps-grid">
                     <div class="step-item reveal">
                         <div class="step-number">01</div>
-                        <h3>Input Your Stats</h3>
-                        <p>Upload your old resume or fill in your details manually.</p>
+                        <h3>Login</h3>
+                        <p>Create an account or login to securely save and manage your resumes.</p>
                     </div>
                     <div class="step-item reveal">
                         <div class="step-number">02</div>
-                        <h3>Optimize with AI</h3>
-                        <p>Our AI analyzes your experience and suggests high-impact content.</p>
+                        <h3>Input</h3>
+                        <p>Fill in your details, upload your photo, and add your professional experience.</p>
                     </div>
                     <div class="step-item reveal">
                         <div class="step-number">03</div>
-                        <h3>Ready to Apply</h3>
-                        <p>Download your polished, PDF-ready resume and start applying.</p>
+                        <h3>Build & Download</h3>
+                        <p>Choose a premium template and download your recruiter-ready resume in seconds.</p>
                     </div>
                 </div>
             </div>
@@ -148,12 +151,74 @@
                 <div class="cta-card">
                     <h2>Ready to Build Your Future?</h2>
                     <p>Stop guessing and start getting noticed. Create your professional resume today.</p>
-                    <a href="#" class="btn btn-primary btn-large">Get Started Now</a>
+                    <a href="javascript:void(0)" onclick="openModal('signup-modal')" class="btn btn-primary btn-large">Get Started Now</a>
                     <div class="cta-subtext">No credit card required. Free to start.</div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Auth Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h3>Welcome Back</h3>
+            <form id="login-form">
+                <input type="text" placeholder="Username" required id="login-username">
+                <input type="password" placeholder="Password" required id="login-password">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p><a href="javascript:void(0)" onclick="openForgotModal()">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="javascript:void(0)" onclick="switchModal('login-modal', 'signup-modal')">Sign Up</a></p>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signup-modal')">&times;</span>
+            <h3 id="signup-title">Create Account</h3>
+            <form id="signup-form">
+                <div id="signup-fields">
+                    <div class="input-row" style="display:flex; flex-wrap: wrap; gap:1rem; margin-bottom: 0.5rem;">
+                        <input type="text" placeholder="First Name" required id="signup-fname" style="flex: 1 1 calc(50% - 0.5rem); min-width: 150px;">
+                        <input type="text" placeholder="Last Name" required id="signup-lname" style="flex: 1 1 calc(50% - 0.5rem); min-width: 150px;">
+                    </div>
+                    <input type="email" placeholder="Email Address" required id="signup-email" style="width: 100%;">
+                    <input type="text" placeholder="Choose Username" required id="signup-username" style="width: 100%;">
+                    <input type="password" placeholder="Create Password" required id="signup-password" style="width: 100%;">
+                    <button type="button" onclick="sendSignupOTP()" class="btn btn-primary" style="margin-top:1rem; width: 100%;">Send Verification Code</button>
+                </div>
+                <div id="otp-field" style="display:none;">
+                    <div class="otp-header" style="margin-bottom: 1.5rem;">
+                        <p style="color: var(--text-primary); font-weight: 500;">Check your inbox!</p>
+                        <p style="font-size: 0.9rem;">We've sent a 6-digit code to your email.</p>
+                    </div>
+                    <input type="text" placeholder="Enter 6-digit OTP" id="signup-otp" maxlength="6" style="text-align:center; font-size: 1.5rem; letter-spacing: 0.5rem;">
+                    <button type="submit" class="btn btn-primary" style="margin-top:1.5rem; width:100%;">Verify & Create Account</button>
+                    <p style="margin-top:1rem; font-size: 0.8rem;">Didn't receive it? <a href="javascript:void(0)" onclick="sendSignupOTP()">Resend Code</a></p>
+                </div>
+            </form>
+            <p>Already have an account? <a href="javascript:void(0)" onclick="switchModal('signup-modal', 'login-modal')">Login</a></p>
+        </div>
+    </div>
+
+    <div id="forgot-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('forgot-modal')">&times;</span>
+            <h3>Reset Password</h3>
+            <form id="forgot-form">
+                <div id="forgot-step-1">
+                    <input type="email" placeholder="Enter Registered Email" required id="forgot-email">
+                    <button type="button" onclick="sendForgotOTP()" class="btn btn-primary">Send Reset OTP</button>
+                </div>
+                <div id="forgot-step-2" style="display:none;">
+                    <input type="text" placeholder="6-digit OTP" required id="forgot-otp">
+                    <input type="password" placeholder="New Password" required id="forgot-new-pass">
+                    <button type="submit" class="btn btn-primary">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container grid">

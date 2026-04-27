@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASIT Resume Builder - Templates</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/resume-template.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="builder-body">
+    <div class="sky-container" id="sky"></div>
+    <div class="signature">with love of asit <span>❤️</span></div>
+
+    <header class="navbar">
+        <div class="container">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer;">
+                <span class="logo-icon">👑</span>
+                <span class="logo-text">ASIT Builder</span>
+            </div>
+            <nav class="nav-links">
+                <a href="builder.html">Builder</a>
+                <a href="templates.html" class="active">Templates</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 120px;">
+        <h1 style="text-align:center; margin-bottom: 3rem;">Premium Templates Library</h1>
+        <div class="features-grid">
+            <div class="feature-card" onclick="selectTemplate('template-modern')">
+                <div class="template-preview template-modern">
+                    <div class="tp-sidebar"></div><div class="tp-main"></div>
+                </div>
+                <h3>Modern Professional</h3>
+                <p>Clean layout with a yellow accent. Best for tech roles.</p>
+                <button class="btn btn-primary" style="margin-top:1rem; width:100%;">Use This</button>
+            </div>
+            <div class="feature-card" onclick="selectTemplate('template-classic')">
+                <div class="template-preview template-classic">
+                    <div class="tp-sidebar"></div><div class="tp-main"></div>
+                </div>
+                <h3>Classic Executive</h3>
+                <p>Bold blue sidebar with white text. High readability.</p>
+                <button class="btn btn-primary" style="margin-top:1rem; width:100%;">Use This</button>
+            </div>
+            <div class="feature-card" onclick="selectTemplate('template-creative')">
+                <div class="template-preview template-creative">
+                    <div class="tp-sidebar"></div><div class="tp-main"></div>
+                </div>
+                <h3>Creative Gradient</h3>
+                <p>Soft gradients and rounded fonts. Perfect for designers.</p>
+                <button class="btn btn-primary" style="margin-top:1rem; width:100%;">Use This</button>
+            </div>
+            <div class="feature-card" onclick="selectTemplate('template-dark')">
+                <div class="template-preview template-dark">
+                    <div class="tp-sidebar"></div><div class="tp-main"></div>
+                </div>
+                <h3>Cyber Dark</h3>
+                <p>Sleek dark theme for modern developers and AI engineers.</p>
+                <button class="btn btn-primary" style="margin-top:1rem; width:100%;">Use This</button>
+            </div>
+        </div>
+
+        <p style="text-align:center; margin-top:4rem; color:var(--text-muted);">More templates coming soon! We are adding 50+ unique styles.</p>
+    </main>
+
+    <style>
+        .template-preview {
+            height: 200px;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+        }
+        .tp-sidebar { width: 30%; height: 100%; }
+        .tp-main { width: 70%; height: 100%; background: white; }
+
+        .template-modern .tp-sidebar { background: #E2E8F0; border-left: 5px solid #FFD700; }
+        .template-classic .tp-sidebar { background: #1E293B; }
+        .template-creative .tp-sidebar { background: linear-gradient(180deg, #FDF2F8, #F5F3FF); }
+        .template-dark .tp-sidebar { background: #1E293B; }
+        .template-dark .tp-main { background: #0F172A; }
+    </style>
+
+    <script>
+        function selectTemplate(name) {
+            localStorage.setItem('selectedTemplate', name);
+            window.location.href = 'builder.html';
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
