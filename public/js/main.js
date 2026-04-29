@@ -190,9 +190,25 @@ function switchModal(oldId, newId) {
 let signupOTP = "";
 
 async function sendSignupOTP() {
-    const email = document.getElementById('signup-email').value;
-    if(!email) return alert("Enter email first");
+    const fname = document.getElementById('signup-fname').value.trim();
+    const lname = document.getElementById('signup-lname').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const username = document.getElementById('signup-username').value.trim();
+    const password = document.getElementById('signup-password').value.trim();
+
+    if(!fname || !lname || !email || !username || !password) {
+        return alert("Please fill in all fields before sending the verification code.");
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return alert("Please enter a valid email address.");
+    }
     
+    const btn = document.querySelector('#signup-fields button');
+    const oldText = btn.innerText;
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+
     try {
         const res = await fetch('/api/otp/send', {
             method: 'POST',
@@ -206,8 +222,15 @@ async function sendSignupOTP() {
             document.getElementById('otp-field').style.display = 'block';
             document.getElementById('signup-title').innerText = 'Verify Email';
             alert("OTP sent to your email!");
+        } else {
+            alert(data.msg || "Failed to send OTP");
         }
-    } catch(err) { alert("Error sending OTP"); }
+    } catch(err) { 
+        alert("Error sending OTP"); 
+    } finally {
+        btn.innerText = oldText;
+        btn.disabled = false;
+    }
 }
 
 async function sendForgotOTP() {
@@ -244,24 +267,32 @@ async function handleAuthLogic() {
             if(enteredOTP !== signupOTP) return alert("Invalid OTP");
 
             const userData = {
-                firstName: document.getElementById('signup-fname').value,
-                lastName: document.getElementById('signup-lname').value,
-                email: document.getElementById('signup-email').value,
-                username: document.getElementById('signup-username').value,
+                firstName: document.getElementById('signup-fname').value.trim(),
+                lastName: document.getElementById('signup-lname').value.trim(),
+                email: document.getElementById('signup-email').value.trim(),
+                username: document.getElementById('signup-username').value.trim(),
                 password: document.getElementById('signup-password').value
             };
 
-            const res = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData)
-            });
-            const data = await res.json();
-            if(res.ok) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('username', data.user.username);
-                window.location.href = 'builder.html';
-            } else alert(data.msg);
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+                
+                let data;
+                try { data = await res.json(); } catch(e) { throw new Error("Server error"); }
+
+                if(res.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('username', data.user.username);
+                    alert("Registration successful!");
+                    window.location.href = 'builder.html';
+                } else alert(data.msg || "Registration failed");
+            } catch (err) {
+                alert("An error occurred during registration. Please try again.");
+            }
         });
     }
 
@@ -271,17 +302,24 @@ async function handleAuthLogic() {
             e.preventDefault();
             const username = document.getElementById('login-username').value;
             const password = document.getElementById('login-password').value;
-            const res = await fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
-            const data = await res.json();
-            if(res.ok) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('username', data.user.username);
-                window.location.href = 'builder.html';
-            } else alert(data.msg);
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                let data;
+                try { data = await res.json(); } catch(e) { throw new Error("Server error"); }
+
+                if(res.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('username', data.user.username);
+                    window.location.href = 'builder.html';
+                } else alert(data.msg || "Login failed");
+            } catch (err) {
+                alert("An error occurred during login. Please try again.");
+            }
         });
     }
 
@@ -293,18 +331,24 @@ async function handleAuthLogic() {
             const otp = document.getElementById('forgot-otp').value;
             const newPassword = document.getElementById('forgot-new-pass').value;
 
-            const res = await fetch('/api/reset-password', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, otp, newPassword })
-            });
-            if(res.ok) {
-                alert("Password updated! Please login.");
-                closeModal('forgot-modal');
-                openModal('login-modal');
-            } else {
-                const data = await res.json();
-                alert(data.msg);
+            try {
+                const res = await fetch('/api/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, otp, newPassword })
+                });
+                let data;
+                try { data = await res.json(); } catch(e) { throw new Error("Server error"); }
+                
+                if(res.ok) {
+                    alert("Password updated! Please login.");
+                    closeModal('forgot-modal');
+                    openModal('login-modal');
+                } else {
+                    alert(data.msg || "Failed to reset password");
+                }
+            } catch (err) {
+                alert("An error occurred resetting password.");
             }
         });
     }

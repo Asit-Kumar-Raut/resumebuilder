@@ -101,10 +101,13 @@ app.post('/api/otp/send', async (req, res) => {
 app.post('/api/register', async (req, res) => {
     const { username, password, email, firstName, lastName } = req.body;
     try {
-        let user = await User.findOne({ username });
-        if (user) return res.status(400).json({ msg: 'User already exists' });
+        let userByUsername = await User.findOne({ username });
+        if (userByUsername) return res.status(400).json({ msg: 'Username already exists' });
 
-        user = new User({ username, password, email, firstName, lastName });
+        let userByEmail = await User.findOne({ email });
+        if (userByEmail) return res.status(400).json({ msg: 'Email already exists' });
+
+        let user = new User({ username, password, email, firstName, lastName });
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
         await user.save();
@@ -112,6 +115,7 @@ app.post('/api/register', async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.json({ token, user: { id: user._id, username: user.username } });
     } catch (err) {
+        console.error("Registration error:", err);
         res.status(500).send('Server error');
     }
 });

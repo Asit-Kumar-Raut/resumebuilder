@@ -154,6 +154,19 @@
 .template-dark .main-section h4 { border-color: #3B82F6; color: white; }
 .template-dark p, .template-dark div, .template-dark h1, .template-dark h3 { color: #F8FAFC !important; }
 
+/* Minimalist (Clean and simple, lots of whitespace) */
+.template-minimalist .resume-paper { box-shadow: none; border: 1px solid #E2E8F0; border-top: 15px solid #94A3B8; border-left: none; }
+.template-minimalist .resume-sidebar { background: white; border-right: 1px solid #E2E8F0; }
+.template-minimalist h1 { font-weight: 400; color: #333; }
+.template-minimalist .sidebar-section h4, .template-minimalist .main-section h4 { border-bottom: 1px solid #E2E8F0; color: #64748B; }
+
+/* Elegant (Serif fonts, gold and dark green) */
+.template-elegant .resume-paper { font-family: 'Georgia', serif; border-left: 15px solid #166534; }
+.template-elegant .resume-sidebar { background: #F0FDF4; color: #166534; }
+.template-elegant .sidebar-section h4 { border-color: #166534; color: #166534; }
+.template-elegant h1 { color: #14532D; font-family: 'Georgia', serif; }
+.template-elegant .main-section h4 { border-color: #166534; color: #14532D; }
+
 /* Builder Layout Adjustments */
 .builder-container {
     padding-top: 100px;
