@@ -116,7 +116,7 @@ app.post('/api/register', async (req, res) => {
         res.json({ token, user: { id: user._id, username: user.username } });
     } catch (err) {
         console.error("Registration error:", err);
-        res.status(500).send('Server error');
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 
@@ -133,7 +133,8 @@ app.post('/api/login', async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.json({ token, user: { id: user._id, username: user.username } });
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error("Login error:", err);
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 
@@ -158,7 +159,8 @@ app.post('/api/forgot-password', async (req, res) => {
 
         res.json({ msg: 'Reset OTP sent' });
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error("Forgot password error:", err);
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 
@@ -166,7 +168,7 @@ app.post('/api/forgot-password', async (req, res) => {
 app.post('/api/reset-password', async (req, res) => {
     const { email, otp, newPassword } = req.body;
     try {
-        const user = await User.findOne({ email, otp, otpExpires: { $gt: Date.now() } });
+        const user = await User.findOne({ email, otp, otpExpires: { $gt: new Date() } });
         if (!user) return res.status(400).json({ msg: 'Invalid or expired OTP' });
 
         const salt = await bcrypt.genSalt(10);
@@ -177,7 +179,8 @@ app.post('/api/reset-password', async (req, res) => {
 
         res.json({ msg: 'Password updated successfully' });
     } catch (err) {
-        res.status(500).send('Server error');
+        console.error("Reset password error:", err);
+        res.status(500).json({ msg: 'Server error' });
     }
 });
 

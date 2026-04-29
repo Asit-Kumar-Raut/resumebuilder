@@ -291,7 +291,7 @@ async function handleAuthLogic() {
                     window.location.href = 'builder.html';
                 } else alert(data.msg || "Registration failed");
             } catch (err) {
-                alert("An error occurred during registration. Please try again.");
+                alert("Registration error: " + err.message);
             }
         });
     }
@@ -318,7 +318,7 @@ async function handleAuthLogic() {
                     window.location.href = 'builder.html';
                 } else alert(data.msg || "Login failed");
             } catch (err) {
-                alert("An error occurred during login. Please try again.");
+                alert("Login error: " + err.message);
             }
         });
     }
@@ -348,7 +348,7 @@ async function handleAuthLogic() {
                     alert(data.msg || "Failed to reset password");
                 }
             } catch (err) {
-                alert("An error occurred resetting password.");
+                alert("Password reset error: " + err.message);
             }
         });
     }
